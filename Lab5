@@ -1,0 +1,4 @@
+findNext :: Int -> [Int] -> Int
+findNext [] = -1
+findNext 0 (x:xs) = x
+findNext a (x:xs) = findNext (a-1) xs
