@@ -14,7 +14,7 @@ data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq, Ord
 makeNode :: Student  -> Tree Student
 makeNode x = Node x EmptyTree EmptyTree
 
---treeInsert :: Student -> Tree Student -> Tree Student
+treeInsert :: Student -> Tree Student -> Tree Student
 treeInsert x EmptyTree = makeNode x
 treeInsert x (Node a left right)
     | getAge x == getAge a = Node x left right
@@ -28,7 +28,7 @@ getAge Student {age = a} = a
 
 --4
 
-
+--a
 main = do
     fileName <- getArgs
     contents <- readFile (head fileName)
@@ -47,3 +47,6 @@ parseCsv (x:xs) =
 makeStudent :: [String] -> Student
 makeStudent [fn,ln,maj,age] = Student fn ln maj (read age)
 
+--b
+makeStudentTree [x] = treeInsert x EmptyTree
+makeStudentTree (x:xs) = treeInsert x (makeStudentTree xs)
