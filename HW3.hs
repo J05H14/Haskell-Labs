@@ -1,3 +1,4 @@
+
 --1
 data Student = Student{ firstName :: String
                       , lastName :: String
@@ -23,5 +24,14 @@ getAge Student {age = a} = a
 
 --4
 
+import System.Environment
+import System.Directory
+import System.IO
+
 main = do
-    
+    path <- getArgs
+    contents <- readFile path
+    putStrLn "The Path is:"
+    putStrLn path
+    putStrLn "The List is:"
+    putStrLn contents
